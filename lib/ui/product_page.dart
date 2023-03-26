@@ -39,7 +39,7 @@ class _AddProductWidgetState extends State<AddProductWidget> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       backgroundColor: Colors.white,
       scrollable: true,
-      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       content: Container(
         height: 300,
         width: 500,
@@ -125,7 +125,7 @@ class ProductsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 250,
                   child: TextField(
                     cursorColor: greyDark,
@@ -155,7 +155,7 @@ class ProductsPage extends StatelessWidget {
                       child: Text(
                     e,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   )),
@@ -189,7 +189,7 @@ class ProductsPage extends StatelessWidget {
                       )),
                       Expanded(
                           child: Text(
-                        dataProvider.products[index].count.toString() + ' шт.',
+                        '${dataProvider.products[index].count} шт.',
                         textAlign: TextAlign.center,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -200,21 +200,19 @@ class ProductsPage extends StatelessWidget {
                               textAlign: TextAlign.center)),
                       Expanded(
                         child: Text(
-                            dataProvider.products[index].price.toString() +
-                                ' рублей',
+                            '${dataProvider.products[index].price} рублей',
                             textAlign: TextAlign.center),
                       ),
                       Expanded(
                         child: Text(
-                            dataProvider.products[index].revenue.toString() +
-                                ' рублей',
+                            '${dataProvider.products[index].revenue} рублей',
                             textAlign: TextAlign.center),
                       ),
                     ],
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return const Divider();
                 },
               );
             }),
@@ -228,7 +226,7 @@ class ProductsPage extends StatelessWidget {
     await showDialog(
         context: context,
         builder: (context) {
-          return AddProductWidget();
+          return const AddProductWidget();
         });
   }
 

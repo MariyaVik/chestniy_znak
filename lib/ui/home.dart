@@ -18,10 +18,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   late TabController _tabController;
   final bottomItems = [
-    BottomItem(icon: Icon(Icons.radar), label: 'Товары'),
-    BottomItem(icon: Icon(Icons.warehouse_sharp), label: 'Склад'),
-    BottomItem(icon: Icon(Icons.shopping_cart), label: 'Закупки'),
-    BottomItem(icon: Icon(Icons.person), label: 'Профиль'),
+    BottomItem(icon: const Icon(Icons.radar), label: 'Товары'),
+    BottomItem(icon: const Icon(Icons.warehouse_sharp), label: 'Склад'),
+    BottomItem(icon: const Icon(Icons.shopping_cart), label: 'Закупки'),
+    BottomItem(icon: const Icon(Icons.person), label: 'Профиль'),
   ];
 
   @override
@@ -39,10 +39,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           if (_tabController.index == 3)
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const LoginScreen()));
                 },
-                icon: Icon(Icons.exit_to_app))
+                icon: const Icon(Icons.exit_to_app))
         ],
         elevation: _tabController.index == 2
             ? 0
@@ -58,8 +58,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         children: [
           ProductsPage(),
           WareHousePage(),
-          PurchasePage(),
-          ProfilePage(),
+          const PurchasePage(),
+          const ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

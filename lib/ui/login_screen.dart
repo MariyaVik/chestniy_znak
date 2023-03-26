@@ -21,27 +21,28 @@ class LoginScreen extends StatelessWidget {
                   TextField(
                     cursorColor: greyDark,
                     controller: TextEditingController()..text = 'ivanov',
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), hintText: 'Логин'),
                   ),
                   TextField(
                     cursorColor: greyDark,
                     controller: TextEditingController()..text = '123123',
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(), hintText: 'Пароль'),
                   ),
                   SizedBox(
                     width: 200,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             backgroundColor: mainColor,
                             foregroundColor: Colors.black),
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (context) => Home()));
+                              MaterialPageRoute(
+                                  builder: (context) => const Home()));
                         },
-                        child: Text(
+                        child: const Text(
                           'Войти',
                           style: TextStyle(fontWeight: FontWeight.w500),
                         )),
@@ -49,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                       width: 200,
                       child: OutlinedButton(
-                          onPressed: () {}, child: Text('Регистрация')))
+                          onPressed: () {}, child: const Text('Регистрация')))
                 ],
               ),
             ),

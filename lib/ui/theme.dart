@@ -149,7 +149,8 @@ ChipThemeData _chipLight(ChipThemeData base) {
 
 DropdownMenuThemeData _dropMenuLigth(DropdownMenuThemeData base) {
   return base.copyWith(
-      inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder()));
+      inputDecorationTheme:
+          const InputDecorationTheme(border: OutlineInputBorder()));
 }
 
 InputDecorationTheme _textFieldLight(InputDecorationTheme base) {
@@ -160,6 +161,6 @@ InputDecorationTheme _textFieldLight(InputDecorationTheme base) {
           states.contains(MaterialState.focused) ? greyDark : greyLight,
     ),
     // labelStyle: const TextStyle(color: backColorMedium),
-    focusedBorder: OutlineInputBorder(borderSide: BorderSide()),
+    focusedBorder: const OutlineInputBorder(borderSide: BorderSide()),
   );
 }

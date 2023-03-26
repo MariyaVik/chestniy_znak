@@ -48,7 +48,7 @@ class _AddSupplyWidgetState extends State<AddSupplyWidget> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       backgroundColor: Colors.white,
       scrollable: true,
-      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       content: Container(
         height: 400,
         width: 500,
@@ -65,7 +65,7 @@ class _AddSupplyWidgetState extends State<AddSupplyWidget> {
                   }),
                   decoration: InputDecoration(
                     isDense: true,
-                    contentPadding: EdgeInsets.symmetric(vertical: 8),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -200,7 +200,7 @@ class WareHousePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 250,
                   child: TextField(
                     cursorColor: greyDark,
@@ -216,7 +216,7 @@ class WareHousePage extends StatelessWidget {
                     onPressed: () {
                       addSupplyDialog(context);
                     },
-                    child: Text('Добавить поставку')),
+                    child: const Text('Добавить поставку')),
               ],
             ),
           ),
@@ -230,7 +230,7 @@ class WareHousePage extends StatelessWidget {
                       child: Text(
                         e,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       )),
@@ -251,12 +251,7 @@ class WareHousePage extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          dataProvider.supplies[index].date.day.toString() +
-                              '.' +
-                              dataProvider.supplies[index].date.month
-                                  .toString() +
-                              '.' +
-                              dataProvider.supplies[index].date.year.toString(),
+                          '${dataProvider.supplies[index].date.day}.${dataProvider.supplies[index].date.month}.${dataProvider.supplies[index].date.year}',
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -281,34 +276,30 @@ class WareHousePage extends StatelessWidget {
                       Expanded(
                           flex: 2,
                           child: Text(
-                              dataProvider.supplies[index].count.toString() +
-                                  ' шт.',
+                              '${dataProvider.supplies[index].count} шт.',
                               textAlign: TextAlign.center)),
                       Expanded(
                         flex: 2,
                         child: Text(
-                            (dataProvider.supplies[index].purchasePrice +
-                                        dataProvider
-                                            .supplies[index].deliveryPrice)
-                                    .toString() +
-                                ' р.',
+                            '${dataProvider.supplies[index].purchasePrice + dataProvider.supplies[index].deliveryPrice} р.',
                             textAlign: TextAlign.center),
                       ),
                       CurrentScreen(
                           mobile: Expanded(
                               flex: 1,
                               child: IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.edit))),
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.edit))),
                           desktop: Expanded(
                               flex: 2,
                               child: ElevatedButton(
                                   onPressed: () {},
-                                  child: Text('Редактировать'))))
+                                  child: const Text('Редактировать'))))
                     ],
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return const Divider();
                 },
               );
             }),
@@ -322,7 +313,7 @@ class WareHousePage extends StatelessWidget {
     await showDialog(
         context: context,
         builder: (context) {
-          return AddSupplyWidget();
+          return const AddSupplyWidget();
         });
   }
 }

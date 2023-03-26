@@ -45,7 +45,7 @@ class _AddSupplyWidgetState extends State<AddSupplyWidget> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       backgroundColor: Colors.white,
       scrollable: true,
-      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       content: Container(
         height: 400,
         width: 500,
@@ -147,6 +147,7 @@ class _PurchasePageState extends State<PurchasePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80.0),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -154,7 +155,7 @@ class _PurchasePageState extends State<PurchasePage>
               BoxShadow(
                   color: Colors.black.withOpacity(0.2),
                   blurRadius: 15.0,
-                  offset: Offset(0.0, 0.75)),
+                  offset: const Offset(0.0, 0.75)),
             ],
             // border: Border(bottom: BorderSide()),
             // gradient: LinearGradient(
@@ -167,13 +168,12 @@ class _PurchasePageState extends State<PurchasePage>
                 color: Colors.yellow, borderRadius: BorderRadius.circular(16)),
             labelColor: Colors.black,
             // unselectedLabelColor: Colors.black,
-            tabs: [
+            tabs: const [
               Tab(text: 'Список заказов'),
               Tab(text: 'Правила'),
             ],
           ),
         ),
-        preferredSize: const Size.fromHeight(80.0),
       ),
       body: Column(
         children: [
@@ -215,7 +215,7 @@ class PurchaseRulePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 250,
                   child: TextField(
                     cursorColor: greyDark,
@@ -231,7 +231,7 @@ class PurchaseRulePage extends StatelessWidget {
                     onPressed: () {
                       addSupplyDialog(context);
                     },
-                    child: Text('Добавить поставку')),
+                    child: const Text('Добавить поставку')),
               ],
             ),
           ),
@@ -245,7 +245,7 @@ class PurchaseRulePage extends StatelessWidget {
                       child: Text(
                         e,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       )),
@@ -266,12 +266,7 @@ class PurchaseRulePage extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          dataProvider.supplies[index].date.day.toString() +
-                              '.' +
-                              dataProvider.supplies[index].date.month
-                                  .toString() +
-                              '.' +
-                              dataProvider.supplies[index].date.year.toString(),
+                          '${dataProvider.supplies[index].date.day}.${dataProvider.supplies[index].date.month}.${dataProvider.supplies[index].date.year}',
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -296,34 +291,30 @@ class PurchaseRulePage extends StatelessWidget {
                       Expanded(
                           flex: 2,
                           child: Text(
-                              dataProvider.supplies[index].count.toString() +
-                                  ' шт.',
+                              '${dataProvider.supplies[index].count} шт.',
                               textAlign: TextAlign.center)),
                       Expanded(
                         flex: 2,
                         child: Text(
-                            (dataProvider.supplies[index].purchasePrice +
-                                        dataProvider
-                                            .supplies[index].deliveryPrice)
-                                    .toString() +
-                                ' р.',
+                            '${dataProvider.supplies[index].purchasePrice + dataProvider.supplies[index].deliveryPrice} р.',
                             textAlign: TextAlign.center),
                       ),
                       CurrentScreen(
                           mobile: Expanded(
                               flex: 1,
                               child: IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.edit))),
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.edit))),
                           desktop: Expanded(
                               flex: 2,
                               child: ElevatedButton(
                                   onPressed: () {},
-                                  child: Text('Редактировать'))))
+                                  child: const Text('Редактировать'))))
                     ],
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return const Divider();
                 },
               );
             }),
@@ -337,7 +328,7 @@ class PurchaseRulePage extends StatelessWidget {
     await showDialog(
         context: context,
         builder: (context) {
-          return AddSupplyWidget();
+          return const AddSupplyWidget();
         });
   }
 }
@@ -368,7 +359,7 @@ class PurchaseListPage extends StatelessWidget {
                       child: Text(
                     e,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   )),
@@ -388,11 +379,7 @@ class PurchaseListPage extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          dataProvider.orders[index].date.day.toString() +
-                              '.' +
-                              dataProvider.orders[index].date.month.toString() +
-                              '.' +
-                              dataProvider.orders[index].date.year.toString(),
+                          '${dataProvider.orders[index].date.day}.${dataProvider.orders[index].date.month}.${dataProvider.orders[index].date.year}',
                           textAlign: TextAlign.center,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -409,8 +396,7 @@ class PurchaseListPage extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                            dataProvider.orders[index].price.toString() +
-                                ' рублей',
+                            '${dataProvider.orders[index].price} рублей',
                             textAlign: TextAlign.center),
                       ),
                       CurrentScreen(
@@ -418,17 +404,18 @@ class PurchaseListPage extends StatelessWidget {
                               flex: 2,
                               child: ElevatedButton(
                                   onPressed: () {},
-                                  child: Text('Скачать заказ'))),
+                                  child: const Text('Скачать заказ'))),
                           mobile: Expanded(
                             flex: 2,
                             child: ElevatedButton(
-                                onPressed: () {}, child: Icon(Icons.download)),
+                                onPressed: () {},
+                                child: const Icon(Icons.download)),
                           ))
                     ],
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider();
+                  return const Divider();
                 },
               );
             }),
