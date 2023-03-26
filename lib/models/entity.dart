@@ -1,0 +1,1 @@
+enum Entity { product, supply }
